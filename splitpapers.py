@@ -26,22 +26,28 @@ def split_papers(pdf_file, paper_pages):
 
     for paper in paper_pages:
         pdf_writer = PdfFileWriter()
+        print paper
             #explode the tuple range
         for page in range(*paper_pages[paper]):
             pdf_writer.addPage(pdf_reader.getPage(page))
-
-    pdf_writer.write(file(os.path.join('extracted_text',paper),'wb'))
-
+        pdf_writer.write(file(os.path.join('extracted_text',paper+'.pdf'),'wb'))
 
 if __name__ == '__main__':
     data_filename = os.path.join('data','TraumaPapers_2009.pdf')
 
     #tuples representing the page ranges foe each paper
     #currently these run to the title to the end, but it might want to remove biblios
-    paper_pages = { 'front': (0,1)}
-#                   'paper1' : (1, 28),
-#                   'paper2' : (28, 65),
-#                   'paper3' : (65,104) }
+    paper_pages = { 'front': (0,1),
+                   'paper1' : (1, 27),
+                   'paper2' : (27, 64),
+                   'paper3' : (64, 103),
+                   'paper4' : (103, 129),
+                   'paper5' : (129, 159),
+                   'paper6' : (159, 182),
+                   'paper7' : (182, 206),
+                   'paper8' : (206, 225),
+                   'paper9' : (225, 260),
+                   'paper10' : (287, 307) }
 
     split_papers(data_filename, paper_pages)
 

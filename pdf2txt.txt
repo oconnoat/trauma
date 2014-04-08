@@ -1,0 +1,2 @@
+ls *.pdf | xargs -t -I % sh -c "pdf2txt.py % > %.txt"
+
